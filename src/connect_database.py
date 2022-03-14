@@ -32,3 +32,12 @@ def update_skin_set_passageway_by_id(db, skin_id, passageway):
             print((passageway, skin_id))
         except pymysql.Error as err:
             print(err)
+
+
+def update_skin_sha256_by_id(db, skin_id, sha256):
+    with db.cursor() as cursor:
+        try:
+            cursor.execute('UPDATE `skin` SET `sha256` = %s WHERE `id` = %s', (sha256, skin_id))
+            print((sha256, skin_id))
+        except pymysql.Error as err:
+            print(err)
